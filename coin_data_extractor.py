@@ -13,7 +13,7 @@ def coin_data_extractor(currency, year_start, month_start, day_start, year_end, 
     #We start by reading all the desired coins, and storing them in a list
     with open('coin_list.csv', newline=None) as f:
         reader = csv.reader(f)
-        coin_list=list(reader)
+        coin_list = list(reader)
     
     if len(coin_list) == 0:
         print('Please input at least one coin name in coin_list.csv')
