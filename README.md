@@ -7,6 +7,6 @@
 currency start_year start_month start_day end_year end_month end_day  
   
 
-### coin_data_extractor.py  
+### exchange_data_extractor.py  
 number_of_days_from_today
 
