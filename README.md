@@ -1,5 +1,6 @@
 # cryptoanalysis_acc
   
+### Input the desired tokens and exchanges in the csv files, using the same syntax as the examples
 
 # Arguments required when running the python utils (respect the order):  
 ### coin_data_extractor.py  
