@@ -1,0 +1,37 @@
+
+body{
+    background-color: #f7f7f7;
+    margin: 0px;
+}
+
+.Header{
+    background-color: #222222;
+    height: 200px;
+    padding: 24px 0 0 0;
+    text-align: center;
+    color : white
+}
+
+.Card{
+    margin: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.Menu {
+    height: 90px;
+    width: 912px;
+    display: flex;
+    justify-content: space-evenly;
+    flex : 0 1 auto;
+    padding-top: 24px;
+    margin: -30px auto 0 auto;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.menu-title {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #079A82;
+}
