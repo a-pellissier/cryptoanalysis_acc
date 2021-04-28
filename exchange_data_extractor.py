@@ -8,10 +8,14 @@ import ipdb
 
 def exchange_data_extractor(days):
     base_url = "http://api.coingecko.com/api/v3"
-    
-    with open('exchange_list.csv', newline=None) as f:
+
+    with open('targets_lists/exchange_list.csv', newline=None) as f:
         reader = csv.reader(f)
         exchange_list = list(reader)
+
+    if len(exchange_list) == 0:
+        print('Please input at least one exchange id in exchange_list.csv')
+        return None
 
     params_dict = {'days' : days}
 

@@ -11,12 +11,12 @@ def coin_data_extractor(currency, year_start, month_start, day_start, year_end, 
     base_url = "http://api.coingecko.com/api/v3"
 
     #We start by reading all the desired coins, and storing them in a list
-    with open('coin_list.csv', newline=None) as f:
+    with open('targets_lists/coin_list.csv', newline=None) as f:
         reader = csv.reader(f)
         coin_list = list(reader)
     
     if len(coin_list) == 0:
-        print('Please input at least one coin name in coin_list.csv')
+        print('Please input at least one coin id in coin_list.csv')
         return None
 
     start_date = datetime.datetime(year_start, month_start, day_start)
