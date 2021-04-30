@@ -4,8 +4,12 @@ import dash_html_components as html
 import pandas as pd
 from dash.dependencies import Output, Input
 
-coin_marketcap_df = pd.read_csv('coin_data/coin_marketcap_data.csv')
-coin_marketcap_df['Date'] = pd.to_datetime(arg=coin_marketcap_df['Date'], unit='ms')
+
+try:
+    coin_marketcap_df = pd.read_csv('coin_data/coin_marketcap_data.csv')
+    coin_marketcap_df['Date'] = pd.to_datetime(arg=coin_marketcap_df['Date'], unit='ms')
+except :
+    print('Error while reading coin or exchange data. Has the data been generated in folders "coin_data" and "exchange_data", using the two extractors?')
 
 external_stylesheets = [
     {
