@@ -8,8 +8,8 @@ import os
 
 try:
     current_path = os.path.dirname(__file__)
-    path = os.path.join(os.path.dirname(current_path),'coin_data/coin_marketcap_data.csv')
     
+    path = os.path.join(os.path.dirname(current_path),'coin_data/coin_marketcap_data.csv')
     coin_marketcap_df = pd.read_csv(path)
     coin_marketcap_df['Date'] = pd.to_datetime(arg=coin_marketcap_df['Date'], unit='ms')
 except :
