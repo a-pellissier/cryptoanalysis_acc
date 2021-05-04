@@ -49,18 +49,20 @@ def coin_data_extractor(currency, year_start, month_start, day_start, year_end, 
             request_url = f"/coins/{coin_id}/market_chart/range"
             response = requests.get(base_url + request_url, params = params_dict)
             while response.status_code != 200:
-                print(Fore.RED + f"API error on {coin_id} - Error {response.status_code}")
+                print(Fore.RED + f"{count} - API error on {coin_id} - Error {response.status_code}")
                 print(Fore.WHITE + f"Waiting for {wait_time} seconds")
                 time.sleep(wait_time)
                 response = requests.get(base_url + request_url, params = params_dict)
             count += 1
             coin_data = response.json()
-            coin_mc = [day[1] for day in coin_data["market_caps"]]
-            coin_v = [day[1] for day in coin_data["total_volumes"]]
-            coin_p = [day[1] for day in coin_data["prices"]]
-            coin_marketcap_data_df[[f'{coin_id}']] = pd.DataFrame(coin_mc, index=None)
-            coin_volume_data_df[[f'{coin_id}']] = pd.DataFrame(coin_v, index=None)
-            coin_price_data_df[[f'{coin_id}']] = pd.DataFrame(coin_p, index=None)
+
+            temp_coin_mc = pd.DataFrame(coin_data['market_caps'], columns = ['Date', f'{coin_id}'])
+            coin_marketcap_data_df = coin_marketcap_data_df.merge(right = temp_coin_mc, on = 'Date', how = 'left')
+            temp_coin_v = pd.DataFrame(coin_data['total_volumes'], columns = ['Date', f'{coin_id}'])
+            coin_volume_data_df = coin_volume_data_df.merge(right = temp_coin_v, on = 'Date', how = 'left')
+            temp_coin_price = pd.DataFrame(coin_data['prices'], columns = ['Date', f'{coin_id}'])
+            coin_price_data_df = coin_price_data_df.merge(right = temp_coin_price, on = 'Date', how = 'left')
+            
             print(Fore.GREEN + f"{count} - Successfully saved {coin_id} data")
     
     coin_marketcap_data_df.to_csv(f"coin_data/coin_marketcap_data.csv", index = False)
