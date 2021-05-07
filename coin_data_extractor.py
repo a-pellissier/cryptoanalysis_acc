@@ -48,7 +48,8 @@ def coin_data_extractor(currency, year_start, month_start, day_start, year_end, 
             request_url = f"/coins/{coin_id}/market_chart/range"
             count += 1
             coin_data = apiRequestHandler(base_url, request_url, params_dict, count, coin_id, wait_time)
-
+            if type(coin_data) == 'str':
+                continue
             coin_marketcap_data_df, coin_volume_data_df, coin_price_data_df = coinDataBuilder(
                 coin_data, coin_marketcap_data_df, coin_volume_data_df, coin_price_data_df, coin_id, count)
 

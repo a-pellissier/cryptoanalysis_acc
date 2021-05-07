@@ -13,9 +13,12 @@ def apiRequestHandler(base_url, request_url, params_dict, count, object_id, wait
     response = requests.get(base_url + request_url, params=params_dict)
     while response.status_code != 200:
         print(Fore.RED + f"{count} - API error on {object_id} - Error {response.status_code}")
-        print(Fore.WHITE + f"Waiting for {wait_time} seconds")
-        time.sleep(wait_time)
-        response = requests.get(base_url + request_url, params=params_dict)
+        if response.status_code == 429:
+            print(Fore.WHITE + f"Waiting for {wait_time} seconds")
+            time.sleep(wait_time)
+            response = requests.get(base_url + request_url, params=params_dict)
+        else:
+            return 'error'
     return response.json()
 
 
