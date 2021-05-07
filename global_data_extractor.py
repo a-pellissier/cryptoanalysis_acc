@@ -37,7 +37,7 @@ def globalDataExtractor(year_start, month_start, day_start):
     global_data_df = global_data_df.merge(right=global_volume_data_df, on='Date', how='left')
 
     #Save the dataframe as a CSV
-    global_data_df.to_csv('global_data/global_data.csv')
+    global_data_df.to_csv('global_data/global_data.csv', index=False)
 
 
 if __name__ == '__main__':
