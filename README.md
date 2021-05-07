@@ -12,4 +12,8 @@ currency start_year start_month start_day end_year end_month end_day
 
 number_of_days_from_today
 
+### global_data_extractor.py
+
+start_year start_month start_day
+
 ## Simply run app.py to open the webapp locally
