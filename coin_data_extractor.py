@@ -3,7 +3,6 @@ import requests
 import datetime
 import csv
 import sys
-import ipdb
 import time
 from colorama import Fore, Back, Style
 
