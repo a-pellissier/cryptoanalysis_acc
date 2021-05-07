@@ -33,8 +33,8 @@ def exchange_data_extractor(days):
         for exchange_id in exchange_list[0][1:]:
             request_url = f"/exchanges/{exchange_id}/volume_chart"
             count += 1
-            exchange_data = apiRequestHandler(base_url, request_url, params_dict, count, exchange_list[0][0], wait_time)
-            if type(exchange_data) == 'str':
+            exchange_data = apiRequestHandler(base_url, request_url, params_dict, count, exchange_id, wait_time)
+            if type(exchange_data) == str:
                 continue
             exchange_volume_data_df = exchangeDataBuilder(exchange_data, exchange_volume_data_df, exchange_id, count)
 
